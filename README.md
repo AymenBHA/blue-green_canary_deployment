@@ -5,6 +5,7 @@ This project builds a highly resilient infrastructure by deploying two identical
 
 we insure transition traffic seamlessly from your live environment (Version 1 / Blue) to our updated environment (Version 2 / Green) using a Canary deployment strategy. Rather than flipping a switch and hoping for the best, a Canary strategy allows us to route a small percentage of user traffic (e.g., 20%) to the new version to monitor for errors before committing to a full 100% cutover. This ensures zero downtime and minimizes the blast radius if an update fails.
 
+<img width="602" height="716" alt="image_6_la1ofw" src="https://github.com/user-attachments/assets/016cca32-a78e-41e0-b9c2-f26ed71fbbc9" />
 
 
 ============================================================================================
