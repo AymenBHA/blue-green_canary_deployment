@@ -1,11 +1,19 @@
 # blue-green_canary_deployment (AWS)
 Blue-green and canary
-In modern cloud environments, deploying new versions of an application shouldn't mean taking your system offline. This project builds a highly resilient infrastructure by deploying two identical, fully isolated environments (Blue and Green) behind an AWS Application Load Balancer (ALB).
+In modern cloud environments, deploying new versions of an application shouldn't mean taking your system offline. 
+This project builds a highly resilient infrastructure by deploying two identical, fully isolated environments (Blue and Green) behind an AWS Application Load Balancer (ALB).
 
 we insure transition traffic seamlessly from your live environment (Version 1 / Blue) to our updated environment (Version 2 / Green) using a Canary deployment strategy. Rather than flipping a switch and hoping for the best, a Canary strategy allows us to route a small percentage of user traffic (e.g., 20%) to the new version to monitor for errors before committing to a full 100% cutover. This ensures zero downtime and minimizes the blast radius if an update fails.
 
-=========================================================================================================
-We need to create the foundational network to host our servers. An Application Load Balancer requires at least two public subnets in different Availability Zones.
+
+
+============================================================================================
+
+
+
+
+We need to create the foundational network to host our servers.
+An Application Load Balancer requires at least two public subnets in different Availability Zones.
 
 Tasks:
 
@@ -41,7 +49,10 @@ insure both subnets created in different Availability Zones
 
 
 
-======================================================================================================
+============================================================================================
+
+
+
 
 We will launch our first server, representing the current "live" version of our application.
 
@@ -67,7 +78,11 @@ Click: Launch instance
 
 
 
-======================================================================================================
+============================================================================================
+
+
+
+
 We will now launch our updated server, representing the new version of our application we want to test.
 
 Tasks:
@@ -89,7 +104,13 @@ Advanced Details (User Data): Scroll to the bottom and paste the green-ec2 file 
 
 Click: Launch instance
 
-======================================================================================================
+
+
+============================================================================================
+
+
+
+
 Target groups tell our Load Balancer where to send traffic. We need one for each environment.
 
 Tasks:
@@ -111,7 +132,12 @@ Note:
 Are both target groups created?
 Does TG-Blue contain the Blue-Server and TG-Green contain the Green-Server?
 
-======================================================================================================
+
+
+============================================================================================
+
+
+
 
 The Load Balancer will act as the single entry point for our users, allowing us to seamlessly shift traffic between the backend target groups.
 
@@ -130,7 +156,10 @@ Note: Wait a few minutes for the Load Balancer status to become Active before pr
 
 
 
-======================================================================================================
+============================================================================================
+
+
+
 
 Currently, 100% of traffic goes to the Blue instance. Let's shift it using a Canary deployment strategy.
 
@@ -163,13 +192,15 @@ Weights: TG-Blue: 0, TG-Green: 100.
 Click: Save changes.
 Result: 100% of users now see 🟩 VERSION 2 (GREEN).
 
-======================================================================================================
 
-Congratulations,
 
-we have successfully executed an enterprise-grade deployment strategy in AWS!
+============================================================================================
 
-By utilizing a Blue/Green architecture combined with a Canary traffic shift, you have learned how to safely introduce new application versions to a subset of users. This methodology minimizes downtime, drastically reduces risk, and ensures a seamless experience for your end-users.
+
+
+
+By utilizing a Blue/Green architecture combined with a Canary traffic shift, we safely introduce new application versions to a subset of users. 
+This methodology minimizes downtime, drastically reduces risk, and ensures a seamless experience for your end-users.
 
 Here is a recap of the skills we just mastered:
 
