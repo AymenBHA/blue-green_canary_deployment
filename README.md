@@ -59,14 +59,9 @@ VPC: BG-VPC
 Subnet: Public-1
 Security Group: Create security group > Name: Web-SG > Add rule: Allow HTTP (80) from Anywhere (0.0.0.0/0).
 
-Advanced Details (User Data): Scroll to the bottom and paste the following:
+Advanced Details (User Data): Scroll to the bottom and paste the blue-ec2 file content
 
-#!/bin/bash
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo '<html><body style="background-color:blue; color:white"><h1>🟦 VERSION 1 (BLUE)</h1></body></html>' > /var/www/html/index.html
+
 
 Click: Launch instance
 
@@ -88,14 +83,9 @@ Network Settings: Click Edit.
 VPC: BG-VPC
 Subnet: Public-2
 Security Group: Choose Select existing security group > Choose Web-SG. (Note: Uncheck the default VPC security group if it is selected).
-Advanced Details (User Data): Scroll to the bottom and paste the following:
+Advanced Details (User Data): Scroll to the bottom and paste the green-ec2 file content
 
-#!/bin/bash
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo '<html><body style="background-color:green; color:white"><h1>🟩 VERSION 2 (GREEN)</h1></body></html>' > /var/www/html/index.html
+
 
 Click: Launch instance
 
